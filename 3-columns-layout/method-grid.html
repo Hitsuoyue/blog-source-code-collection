@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      html,
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      /*三列布局: 表格*/
+      .wrap-grid {
+        display: grid;
+        grid-template-columns: 100px auto 100px;
+      }
+      .wrap-grid div{
+        height: 20vh;
+        display: table-cell;
+      }
+      .wrap-grid .left {
+        background-color: aliceblue;
+      }
+      .wrap-grid .center {
+        background-color: antiquewhite;
+      }
+      .wrap-grid .right {
+        background-color: aquamarine;
+      }
+    </style>
+  </head>
+  <body>
+    三列布局：栅格
+    <br>
+    特点：不会变形，宽度只会缩到保持不变形的最窄
+    <div class="wrap-grid">
+      <div class="left">left</div>
+      <div class="center">center</div>
+      <div class="right">right</div>
+    </div>
+  </body>
+</html>

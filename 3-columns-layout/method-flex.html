@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      html,
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      /*三列布局: 弹性盒模型*/
+      .wrap-flex {
+        display: flex;
+      }
+      .wrap-flex div{
+        height: 20vh;
+      }
+      .wrap-flex .left {
+        width: 100px;
+        background-color: aliceblue;
+      }
+      .wrap-flex .center {
+        flex: 1;
+        background-color: antiquewhite;
+      }
+      .wrap-flex .right {
+        width: 200px;
+        background-color: aquamarine;
+      }
+    </style>
+  </head>
+  <body>
+    三列布局：弹性盒模型
+    <br>
+    特点：宽度变得极窄后，左右两边会自适应变窄
+    <div class="wrap-flex">
+      <div class="left">left</div>
+      <div class="center">center</div>
+      <div class="right">right</div>
+    </div>
+  </body>
+</html>

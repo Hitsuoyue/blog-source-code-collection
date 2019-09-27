@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      html,
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      /*三列布局: 绝对定位*/
+      .wrap-absolute div{
+        height: 20vh;
+      }
+      .wrap-absolute .left {
+        width: 100px;
+        position: absolute;
+        left: 0;
+        background-color: aliceblue;
+      }
+      .wrap-absolute .center {
+        position: absolute;
+        left: 100px;
+        right: 200px;
+        background-color: antiquewhite;
+      }
+      .wrap-absolute .right {
+        width: 200px;
+        position: absolute;
+        right: 0;
+        background-color: aquamarine;
+      }
+    </style>
+  </head>
+  <body>
+      三列布局：绝对定位
+      <br>
+      特点：宽度变得极窄后，三列会发生覆盖
+    <div class="wrap-absolute">
+      <div class="left">left</div>
+      <div class="center">center</div>
+      <div class="right">right</div>
+    </div>
+  </body>
+</html>

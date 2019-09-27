@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      html,
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      /*三列布局 -- 行内块级元素 & 负边距*/
+      .wrap-inline-3 {
+        font-size: 0;
+        padding-left: 100px;
+        padding-right: 200px;
+      }
+      .wrap-inline-3 div{
+        display: inline-block;
+        vertical-align: top;
+        height: 20vh;
+        font-size: 12px;
+      }
+      .wrap-inline-3 .left {
+        width: 100px;
+        margin-left: -100px;
+        background-color: aliceblue;
+      }
+      .wrap-inline-3 .center {
+        width: 100%;
+        background-color: antiquewhite
+      }
+      .wrap-inline-3 .right {
+        width: 200px;
+        margin-right: -200px;
+        background-color: aquamarine;
+      }
+      /*三列布局 -- 行内块级元素 & calc 计算*/
+      .wrap-inline-calc-3 {
+        font-size: 0;
+        width: 100%;
+      }
+      .wrap-inline-calc-3 div{
+        display: inline-block;
+        vertical-align: top;
+        height: 20vh;
+        font-size: 12px;
+      }
+      .wrap-inline-calc-3 .left {
+        width: 100px;
+        background-color: aliceblue;
+      }
+      .wrap-inline-calc-3 .center {
+        width: calc(100% - 300px);
+        background-color: antiquewhite
+      }
+      .wrap-inline-calc-3 .right {
+        width: 200px;
+        background-color: aquamarine;
+      }
+    </style>
+  </head>
+  <body>
+    三列布局 -- 行内块级元素 & 负边距
+    <br>
+    特点：宽度缩到极窄时，中间部分宽度缩为0，内容会被右侧覆盖。
+    <div class="wrap-inline-3">
+      <div class="left">left</div>
+      <div class="center">center</div>
+      <div class="right">right</div>
+    </div>
+    三列布局 -- 行内块级元素 & calc 计算
+    <br>
+    特点：宽度缩到极窄时，中间部分宽度缩为0，内容仍会显示，右侧会被挤到下方。
+    <div class="wrap-inline-calc-3">
+      <div class="left">left</div>
+      <div class="center">center</div>
+      <div class="right">right</div>
+    </div>
+  </body>
+</html>

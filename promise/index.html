@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <img src="" alt="" id="img">
+    <script>
+        // function loadImg (src, sucess, error) {
+        //     // let img = document.getElementById('img');
+        //     let img = document.createElement('img');
+        //     img.onload = () => {
+        //         sucess(img)   
+        //     };
+        //     img.onerror = () => {
+        //         error()
+        //     };
+        //     img.src = src;
+        // }
+
+        // let src = 'https://pics2.baidu.com/feed/c8ea15ce36d3d5396fdfa50b69d96655372ab0f8.png?token=c211f72dbfc8dec54800044b092be930&s=9EA6E104DCAFA32C263418330300C0D0';
+        // loadImg(src, function(img){
+        //     console.log('图片加载成功！', img.width, img.height)
+        // }, function(){
+        //     console.log('图片加载失败！')
+        // })
+
+        function loadImg (src) {
+            const promise = new Promise(function(resolve, reject) {
+                let img = document.getElementById('img');
+                img.onload = function() {
+                    resolve(img)
+                }
+                img.onerror = function() {
+                    reject()
+                }
+                img.src = src;
+            })
+            return promise
+        }
+        let src = 'https://pics2.baidu.com/feed/c8ea15ce36d3d5396fdfa50b69d96655372ab0f8.png?token=c211f72dbfc8dec54800044b092be930&s=9EA6E104DCAFA32C263418330300C0D0';
+        let result = loadImg(src);
+        result.then(function(img) {
+            console.log('图片加载成功！', img.width)
+        }, function(img) {
+            console.log('图片加载失败！')
+        })
+        result.then(function(img) {
+            console.log('图片加载成功！', img.height)
+        })
+
+    </script>
+</body>
+</html>

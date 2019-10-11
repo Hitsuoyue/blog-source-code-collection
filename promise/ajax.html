@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function ajax (type, url, success, fail, params={}, async=true) {
+            let xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXobject("Microsoft.XMLHTTP");
+            xhr.open(type, url, async)
+            if(type == 'post') {
+                xhr.setRequestHeader('Content-Type:application/x-www-form-urlencoded')
+            }
+            xhr.send(type == 'get' ? null : params)
+            xhr.onreadystatechange = function() {
+                if(xhr.readyState == 4) {   //请求完成
+                    if(xhr.status == 200) { //请求成功
+                        success(this.responseText)
+                    } else {
+                        fail()
+                    }
+                }
+            }
+
+        }
+
+        ajax(
+            'get',
+            'https://www.easy-mock.com/mock/5d9efea3cda1720dffee5de3/example/promise/getUserInfo',
+            function(res) {
+                console.log('res', res)
+            },
+            function() {
+                throw new Error('请求失败')
+            }
+        );
+
+    </script>
+</body>
+</html>

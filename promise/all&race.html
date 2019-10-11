@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <img src="" alt="" id="img1">
+    <img src="" alt="" id="img2">
+    <script>
+
+        function loadImg (src, id) {
+            //1. new Promise 实例，并传入函数，且函数要有 resolve 和 reject 两个参数
+            //2. 成功时执行 resolve， 失败时执行 reject
+            //3. 通过 .then(resolve, reject) 监听结果, 并传入要执行的 resolve, reject 函数, 方便多个串联
+            const promise = new Promise(function(resolve, reject) {
+                let img = document.getElementById(id);
+                // let img = document.getElementById('img1');
+                //抛出语法错误（逻辑外）
+                // throw new Error('错啦')
+                console.log(111, id)
+                img.onload = function() {
+                    resolve(img)
+                }
+                img.onerror = function(error) {
+                    reject(error)
+                }
+                img.src = src;
+            })
+            return promise
+        }
+        let src1 = 'https://pics2.baidu.com/feed/c8ea15ce36d3d5396fdfa50b69d96655372ab0f8.png?token=c211f72dbfc8dec54800044b092be930&s=9EA6E104DCAFA32C263418330300C0D0';
+        let src2 = 'https://pics7.baidu.com/feed/9d82d158ccbf6c818d6dbf5eda36203033fa403f.jpeg?token=274ad2ad4102d7adf4c053e1cc8ed56c&s=C8D2308C0E083ECC231414900300C0B8';
+        
+        let result1 = loadImg(src1, 'img1')
+        let result2 = loadImg(src2, 'img2')
+
+        // Promise.all
+        // Promise.all() 参数是一个 promise 对象数组，所有 promise 全部执行完成后，统一执行 resolve
+        Promise.all([result1, result2]).then( datas => {
+            //datas 是一个数组，一次包含每个 promise 返回的内容
+            console.log(datas)
+        })
+        // Promise.race
+        // Promise.race() 参数是一个 promise 对象数组，只要有一个 promise 执行完成，就会统一执行 resolve
+        Promise.race([result1, result2]).then( data => {
+            //data 是第一个执行完成的 promise 返回的内容
+            console.log(data)
+        })
+    </script>
+</body>
+</html>
